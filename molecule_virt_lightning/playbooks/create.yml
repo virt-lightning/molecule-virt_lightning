@@ -1,0 +1,24 @@
+---
+- name: Create
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  #no_log: "{{ molecule_no_log }}"
+  tasks:
+    - name: Create the Debian 10 VM
+      virt_lightning.virt_lightning.vm:
+        distro: debian-10
+        name: myvm
+        state: present
+      register: new_vm
+    - debug: var=new_vm
+
+    - name: Dump instance config
+      copy:
+        content: |
+          - address: {{ new_vm.ipv4 }}
+            identity_file: ~/.ssh/id_rsa.pub
+            instance: {{ new_vm.name }}
+            port: 22
+            user: goneri
+        dest: "{{ molecule_instance_config }}"
