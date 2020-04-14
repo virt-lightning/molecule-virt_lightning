@@ -5,6 +5,14 @@ Molecule Virt-Lightning (libvirt) Plugin
 Molecule Virt-Lightning is designed to allow use of Libvirt for provisioning of test
 resources.
 
+Installation
+============
+
+This drive is still experimental. You use it, you will need:
+
+- Virt-Lightning with the following patch: https://github.com/virt-lightning/virt-lightning/pull/163
+- ansible-collection-virt-lightning with the following patch: https://github.com/virt-lightning/ansible-collection-virt-lightning/pull/3
+
 Documentation
 =============
 
